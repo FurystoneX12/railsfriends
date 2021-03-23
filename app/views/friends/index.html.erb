@@ -1,0 +1,78 @@
+
+<% if user_signed_in? %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Twitter</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Birthday</th>
+        <th>User Id</th>
+        <th> </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td>
+            <%= link_to friend.first_name + ' ' + friend.last_name, friend %>
+          </td>
+          <td>@<%= friend.twitter %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.gender %></td>
+          <td>
+            <%= friend.birthmonth %>
+            <%= friend.birthday %>
+            <%= friend.birthyear %>
+          </td>
+          <td><%= friend.user_id %></td>
+          <td><%= link_to 'Destroy', friend, class:"link", method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %></td>
+          
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "New Friend", new_friend_path, class:"btn btn-dark" %>
+<% else %>
+
+  <h2>Hello, world!</h2>
+  <p>This is my first Rails Website.</p>
+  <p>And... this is pretty much all the content.</p>
+  <h5>Disclaimer!</h5>
+
+  <p>This is not the official website of Cerebrealty.com. This is is more like a test website for the upcoming official Cerebrealty.com site.</p>
+  <p>
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  </p>
+  <p>I understand why you didn't understand the text above. It is because it is <ins>senseless.</ins> </p>
+  <p>
+    How about consider going to my  
+    <a href="https://www.youtube.com/playlist?list=PLsaE4hg3piGxOzuTg14iyU7TxA6uSmYl_">
+      playlist?
+    </a>
+  </p>
+  <p> 
+    <a href="https://www.facebook.com">
+      Why so serious?
+    </a>
+  </p>
+  <p>Keep the change 'ya filthy animal. </p>
+  <p>As you can see this <mark>text</mark> is hightlighted.</p>
+  <p><ins>As you can see this sentence is underlined.</ins></p>
+  <p><strong>As you can see, this sentence is bolded.</strong></p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<br>

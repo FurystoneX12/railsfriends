@@ -1,0 +1,81 @@
+
+<div class="card">
+  <h2 class="card-header">List of Settings`</h2>
+  <div class="card-body">
+    <!-- this is where you put all the madness -->
+    <div class="accordion" id="accordionExample">
+      <!-- accordion item barrier -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Edit Profile</button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- Start of the Edit My Account section -->
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="form-floating mb-3">
+            
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+                  <%= f.label :email %>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="form-floating mb-3">
+                
+                <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Password (leave blank if you don't want to change it)" %>
+                <%= f.label :password %>
+
+                <% if @minimum_password_length %>
+                  <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+              </div>
+
+              <div class="form-floating mb-3">
+                
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirm Password" %>
+                <%= f.label :password_confirmation %>
+              </div>
+
+              <div class="form-floating mb-3">
+                 
+                <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder:"Previous Password " %>
+                <%= f.label :current_password %>
+
+                <em><p>(we need your previous password to confirm your changes)</p></em>
+              </div>
+              <br>
+              <div class="actions">
+                <%= f.submit "Update", class:"btn btn-dark" %>
+              </div>
+            <% end %>
+            <!-- ENd of the Edit My Account section -->
+          </div>
+        </div>
+      </div>
+      <!-- accordion item barrier -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Delete My Account</button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- Start of the Delete My Account section -->
+            <p>Unhappy? <%= button_to "Delete my Account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account?" }, method: :delete, class:"btn btn-danger" %></p>
+            <!-- End of the Delete My Account section -->
+          </div>
+        </div>
+      </div>
+      <!-- accordion item barrier -->
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
